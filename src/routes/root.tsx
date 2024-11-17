@@ -5,6 +5,9 @@ const root = () => {
       <li>
         <Link to='/signup'> Signup </Link>
       </li>
+      <li>
+        <Link to='/todos'> Todos </Link>
+      </li>
     </ul>
   )
 }
