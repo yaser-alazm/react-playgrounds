@@ -1,35 +1,41 @@
-import {useState} from 'react'
-import {z} from 'zod'
-
-const validationSchema = z.object({
-  name: z
-    .string()
-    .min(5, {message: 'Name should be at least 5 chars'})
-    .max(25, {message: 'Name should has maximum of 25 chars'}),
-})
+import {FormEvent, useState} from 'react'
+import {ZodError} from 'zod'
+import {validationSchema} from './validations'
 
 const Signup = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const validateInputs = () => {
-    // integrate zod for validation
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    try {
+      e.preventDefault()
+      validationSchema.parse({name, email, password})
+      const result = (await addUser()) as Promise<string>
+      console.log(result)
+    } catch (error) {
+      if (error instanceof ZodError) {
+        console.error('validation error: ', error.issues[0].message)
+      } else {
+        console.error('Unexpected error: ', error)
+      }
+    }
   }
 
-  const handleSubmit = () => {
-    // handle mocked-api call and submission
+  const addUser = () => {
+    return new Promise((resolve, _) => {
+      setTimeout(() => resolve('Added successfully!'), 3000)
+    })
   }
   return (
     <>
       <h2>Signup </h2>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={handleSubmit}>
         <input
           type='text'
           name='name'
           value={name}
           onChange={(e) => setName(e.target.value)}
-          required
           placeholder='Full Name'
         />
         <br />
@@ -38,7 +44,6 @@ const Signup = () => {
           name='email'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
           placeholder='Email Address'
         />
         <br />
@@ -47,7 +52,6 @@ const Signup = () => {
           name='password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
           placeholder='Password'
         />
         <br />
