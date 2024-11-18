@@ -4,6 +4,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Signup from './routes/signup'
 import Root from './routes/root'
 import Todos from './routes/todos'
+import Pagination from './routes/pagination'
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: '/todos',
     element: <Todos />,
+  },
+  {
+    path: '/pagination',
+    element: <Pagination />,
   },
 ])
 

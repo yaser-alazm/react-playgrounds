@@ -8,6 +8,9 @@ const root = () => {
       <li>
         <Link to='/todos'> Todos </Link>
       </li>
+      <li>
+        <Link to='/pagination'> Pagination </Link>
+      </li>
     </ul>
   )
 }
