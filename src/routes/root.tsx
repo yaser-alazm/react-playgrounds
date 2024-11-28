@@ -11,6 +11,9 @@ const root = () => {
       <li>
         <Link to='/pagination'> Pagination </Link>
       </li>
+      <li>
+        <Link to='/search-table'> Search Table </Link>
+      </li>
     </ul>
   )
 }

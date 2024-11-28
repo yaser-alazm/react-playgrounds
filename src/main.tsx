@@ -5,6 +5,7 @@ import Signup from './routes/signup'
 import Root from './routes/root'
 import Todos from './routes/todos'
 import Pagination from './routes/pagination'
+import SearchTable from './routes/search-table'
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: '/pagination',
     element: <Pagination />,
+  },
+  {
+    path: '/search-table',
+    element: <SearchTable />,
   },
 ])
 
