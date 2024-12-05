@@ -4,8 +4,8 @@ export const fetchData = (
   page: number,
   limit: number
 ): Promise<APIResponse> => {
-  let start = (page - 1) * limit
-  let end = start + limit
+  const start = (page - 1) * limit
+  const end = start + limit
 
   return new Promise((resolve, _) => {
     setTimeout(() => {
