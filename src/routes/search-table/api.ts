@@ -11,7 +11,7 @@ const mockData = [
   {id: 10, name: 'Jack', age: 26},
 ]
 
-export type User = typeof mockData extends (infer U)[] ? U : any[]
+export type User = typeof mockData extends (infer U)[] ? U : never[]
 
 export const LIMIT = 3 as const
 export const TOTAL = mockData.length
